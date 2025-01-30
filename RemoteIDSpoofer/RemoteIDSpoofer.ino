@@ -11,11 +11,28 @@ void setup() {
   Serial.begin(115200);
   
   // start the frontend and don't exit until either timer elapse or user ends it
-  // the timer here is set at 2 minutes
-  Frontend frontend(120000);
+  // the timer here is set at 5 minutes
+
+  //Turn on LED for Wifi Dev Board
+
+  pinMode(B_PIN, OUTPUT);
+  pinMode(G_PIN, OUTPUT);
+  pinMode(R_PIN, OUTPUT);
+
+  digitalWrite(B_PIN, LOW);
+  digitalWrite(G_PIN, HIGH);
+  digitalWrite(R_PIN, HIGH);
+
+  Frontend frontend(300000);
   while (!frontend.do_spoof) {
     frontend.handleClient();
   }
+  
+  //Change LED for Wifi Dev Board
+  
+  digitalWrite(B_PIN, HIGH);
+  digitalWrite(G_PIN, LOW);
+  digitalWrite(R_PIN, HIGH);
 
   // instantiate the spoofers and change locations
   Serial.println("Starting Spoofers");
