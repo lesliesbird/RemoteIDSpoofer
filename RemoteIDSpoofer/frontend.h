@@ -16,6 +16,12 @@
 
 #endif
 
+//define pins for Wifi Dev Board LEDs
+
+#define B_PIN 4
+#define G_PIN 5
+#define R_PIN 6
+
 #ifndef FRONTEND_H
 #define FRONTEND_H
 
